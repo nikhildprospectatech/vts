@@ -1,0 +1,80 @@
+<div class="main_container">
+    <mat-sidenav-container class="sidenav_container">
+      <mat-sidenav  #snav [mode]="(isHandset$ | async) ? 'over' : 'side'" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" class="side_nav bg-color-1" [opened]="true">
+        <div class="bg-nav-2" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+         <img width="70" src='../../../assets/securityLogo.png' class="img-size">
+         <!-- <div class="mmenu"><mat-icon>menu</mat-icon></div> -->
+        <span class="margin">
+            VMS
+        </span>
+        </div>
+        
+        <mat-nav-list style="height: 77vh;" class="navigation_list">
+          <span *ngFor="let option of navigationOptions">
+            <span *ngIf="!option.children || option.children.length === 0" (click)="navigate(option)" fxLayout="row" fxLayoutAlign="center start" >
+              <div fxLayout="row" fxLayoutAlign="center stretch" style="width: 90%; background: #FFFFFF;
+              box-shadow: 0px 0px 20px #3A3F53;
+              border-radius: 10px;">
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" style="width: 100%;"
+                  [ngClass]="{ 'side-menue-clr-1 ' : option.displayName == state, 'side-menue-1': true}">
+                  <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="15px" style="width: 100%;">
+                    <div>
+                      <img src={{option.logo}} class="sidenav_list_item_img">
+                    </div>
+                    <div style="color: #676883;font-weight: 500;"> {{option.displayName}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </span>
+
+      
+        </mat-nav-list>
+       
+    <img style="width: 55%;margin-left: 2em;" src='../../../assets/prospecta logo-whitetext 1.png' >
+
+      </mat-sidenav>
+      
+      <mat-sidenav-content class="side-nv-cnt">
+        <div>
+          
+          <mat-toolbar class="header" style="align-items:center;justify-content:space-between;background: #FFFFFF;
+            box-shadow: 0px 4px 5px rgb(151 151 157);">
+              <div>
+                
+              </div>
+            <div style="color: #35355B ">Vehicle Tracking System</div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2em">
+              <div style="background: #FFFFFF; color: #7E7E7E;
+              box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.5);
+              border-radius: 40px;" fxLayout="row" fxLayoutAlign="start center">
+                <div fxLayout="row" fxLayoutAlign="start center" style="height: 45px; margin-right: 10px; padding: 15px; " fxLayoutGap="10px">
+                  <mat-icon> person_pin</mat-icon>
+                  <div fxLayout="column" fxLayoutAlign="start stretch">
+                    <div style="height: 19px;
+                    font-size: 17px;">
+                     <!-- {{ds.userData?.fullName}} -->
+                     Nikhil
+                    </div>
+                    <div style="font-size: 15px">
+                      Administrator
+                    </div>
+  
+                  </div>
+                </div>
+                <mat-icon style="color: #70509A; margin-right: 10px;cursor: pointer;">exit_to_app</mat-icon>
+              </div>
+              <!-- <mat-icon style="transform: rotate(90deg);border-radius: 20px;background: white;
+                color: #1F5B7E;font-size: 30px;height: 30px; width: 30px;" class="pointer" (click)="signOut()">power_settings_new</mat-icon> -->
+            </div>
+          </mat-toolbar>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start stretch">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  
