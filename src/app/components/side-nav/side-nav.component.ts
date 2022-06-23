@@ -43,7 +43,7 @@ export class SideNavComponent implements OnInit {
       {
         optionId: 1,
         displayName: 'Vehicles Data',
-        logo: '../assets/grp1.jpg',
+        logo: '../assets/grp1.png',
         isActive: true
       }
     ]

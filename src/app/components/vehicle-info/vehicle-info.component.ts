@@ -9,11 +9,19 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class VehicleInfoComponent implements OnInit {
   foods = [
-    { viewValue: 2 },
+    { viewValue: 5 },
     {
-      viewValue: 3
+      viewValue: 10
+    },
+    {
+      viewValue: 15
+    },
+    {
+      viewValue: 20
     }
   ];
+
+  default = 5;
 
   dataSource: MatTableDataSource<any>;
 
