@@ -26,7 +26,6 @@ export class SideNavComponent implements OnInit {
       shareReplay()
     );
 
-  imageurl:any="../../assets/dummypic.jpg"
   
   constructor(
     private route: Router,
@@ -44,7 +43,7 @@ export class SideNavComponent implements OnInit {
       {
         optionId: 1,
         displayName: 'Vehicles Data',
-        logo: './assets/grp1.jpg',
+        logo: '../assets/grp1.jpg',
         isActive: true
       }
     ]

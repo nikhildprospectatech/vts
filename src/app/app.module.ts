@@ -21,6 +21,8 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.component';
+import { MatTableModule } from "@angular/material/table";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.com
     MatNativeDateModule,
     MatCardModule,
     MatSlideToggleModule,
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

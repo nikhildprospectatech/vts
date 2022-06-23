@@ -1,0 +1,36 @@
+.card{
+    background: #FFFFFF;
+border-radius: 20px;
+}
+
+.bg-clr{
+    background: #F4F4F4;
+box-shadow: 4px 4px 4px rgba(156, 156, 156, 0.44);
+border-radius: 4px;
+padding: 10px;
+}
+
+.bg-2{
+    background: #FFFFFF;
+border: 1px solid #D8D8D8;
+border-radius: 20px;
+}
+
+.bg-3{
+    background: #E7E7E7;
+border-radius: 6.66667px;
+}
+
+.width100{
+    width: 100% !important;
+}
+.margin-left{
+    margin-left: 30px;
+}
+
+.font-size {
+    font-size: 10px;
+}
+.margin-bottom{
+    margin-bottom: 2em;
+}
