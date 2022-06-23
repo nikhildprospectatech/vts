@@ -10,3 +10,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: unset !important;
     padding-bottom: 4px !important;
 }
+.mat-slide-toggle-thumb{
+    background-color: #f15858;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+    background-color: #32CC8B;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+    background-color: #9e9e9e;
+}
