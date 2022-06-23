@@ -20,9 +20,9 @@ export class VehicleInfoComponent implements OnInit {
       viewValue: 20
     }
   ];
-
+  inOutStatus :boolean = false;
   default = 5;
-
+  vehicleData;
   dataSource: MatTableDataSource<any>;
 
   displayedColumns: string[] = ['Sl.No.', 'Date', 'Vehicle Number', 'Category', 'From Hour', 'To Hour', 'Check In/out'];
@@ -36,6 +36,16 @@ export class VehicleInfoComponent implements OnInit {
 
   async _apiCall() {
     let res = await this.backend.getVehicleData();
+    this.vehicleData = res;
     this.dataSource = new MatTableDataSource(res);
+  }
+
+  toggle(val, item){
+    this.inOutStatus = val.checked;
+    this.vehicleData.forEach(element => {
+      if(element.vehicleNumber == item.vehicleNumber){
+        element.currentStatus = val.checked
+      }
+    });
   }
 }
