@@ -37,7 +37,7 @@
 
       </mat-sidenav>
       
-      <mat-sidenav-content class="side-nv-cnt">
+      <mat-sidenav-content class="side-nv-cnt" fxLayout="column" fxLayoutAlign="start stretch" >
         <div>
           
           <mat-toolbar class="header" style="align-items:center;justify-content:space-between;background: #FFFFFF;
@@ -71,7 +71,7 @@
             </div>
           </mat-toolbar>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start stretch">
+        <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex = "100">
           <router-outlet></router-outlet>
         </div>
       </mat-sidenav-content>
