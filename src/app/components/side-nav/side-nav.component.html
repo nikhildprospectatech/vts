@@ -13,16 +13,14 @@
         <mat-nav-list style="height: 77vh;" class="navigation_list">
           <span *ngFor="let option of navigationOptions">
             <span *ngIf="!option.children || option.children.length === 0" (click)="navigate(option)" fxLayout="row" fxLayoutAlign="center start" >
-              <div fxLayout="row" fxLayoutAlign="center stretch" style="width: 90%; background: #FFFFFF;
-              box-shadow: 0px 0px 20px #3A3F53;
-              border-radius: 10px;">
+              <div fxLayout="row" fxLayoutAlign="center stretch"  style="width: 100%; margin-left: 1em; margin-bottom: 1em;">
                 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px" style="width: 100%;"
                   [ngClass]="{ 'side-menue-clr-1 ' : option.displayName == state, 'side-menue-1': true}">
-                  <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="15px" style="width: 100%;">
+                  <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="15px" style="width: 100%;">
                     <div>
                       <img src={{option.logo}} class="sidenav_list_item_img">
                     </div>
-                    <div style="color: #676883;font-weight: 500;"> {{option.displayName}}
+                    <div > {{option.displayName}}
                     </div>
                   </div>
                 </div>

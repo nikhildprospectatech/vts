@@ -27,7 +27,7 @@
   }
   
   .sidenav_list_item_img {
-    width: 15px;
+    width: 20px;
     height: 20px;
     filter:invert(5px);
   }
@@ -234,8 +234,9 @@ box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     padding: 10px 11px 5px 40px;
     border-radius:  0px 20px 20px 0p;
-    background: #455D74;
-    box-shadow: 0px 5px 5px 0px #FFFFFF82;
+    background: #e0e0ec;
+    color: #676883 !important;
+    font-weight: 500 !important;
   }
   
   .margin-right{
@@ -246,6 +247,8 @@ box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     padding: 11px 11px 5px 15px;
     margin-bottom: 5px;
+    border-radius: 20px 0px 0px 20px;
+    color: #FFFFFF !important;
   }
   
   .navigation_list_with_subitem{

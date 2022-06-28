@@ -43,7 +43,13 @@ export class SideNavComponent implements OnInit {
       {
         optionId: 1,
         displayName: 'Vehicles Data',
-        logo: '../assets/grp1.png',
+        logo: '../assets/nav1.png',
+        isActive: true
+      },
+      {
+        optionId: 2,
+        displayName: 'Visitors Data',
+        logo: '../assets/nav2.png',
         isActive: true
       }
     ]
@@ -58,6 +64,11 @@ export class SideNavComponent implements OnInit {
 
       case 1 :
           route = 'home/vehicle-info';
+          this.state = 'Vehicles Data';
+        break;
+      case 2 :
+          route = 'home/vehicle-info';
+          this.state = 'Visitors Data';
         break;
 
       default :
