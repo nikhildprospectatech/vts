@@ -1,6 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="center stretch" fxFlex='100' style="height: 100%; padding: 15px;">
     <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 100%;padding: 10px;" fxLayoutGap="20px" class="card">
-        <span style="font-weight:500;font-size: 20px;" >Dashboard</span>
+        <div fxLayout="row" fxLayoutAlign="space-between stretch">
+            <span style="font-weight:500;font-size: 20px;" >Dashboard</span>
+            <mat-icon style="margin-right: 1em; cursor: pointer; color :green" (click)="_apiCall(limit)">refresh</mat-icon>
+        </div>
+       
         <div fxLayout="row" fxLayoutAlign="space-between end"  class="margin-left ">
             <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="30" fxLayoutGap="gappx">
                 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
@@ -15,19 +19,14 @@
 
             <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="px" fxFlex = "65" class="bg-clr">
                 <div fxLayout="row" fxLayoutAlign="start stretch">
-                    <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px" fxFlex="40" style=" border-right: 2px solid #E2E2E2; padding: 5px;">
-                        <img src="../../../assets/v1.png" style="width:20px;height : 15px">
-                        <span>0</span>
-                        <span class="font-size">TOTAL VEHICLE PARKED</span>
-                    </div>
                     <div fxLayout="column" fxFlex="40" fxLayoutAlign="start center" fxLayoutGap="5px" style=" border-right: 2px solid #E2E2E2; padding: 5px;">
                         <img src="../../../assets/v2.png" style="width:20px;height : 15px">
-                        <span>0</span>
+                        <span>{{vehicleData?.vehicleIn}}</span>
                         <span class="font-size">VEHICLES IN</span>
                     </div>
                     <div fxLayout="column" fxFlex="40" fxLayoutAlign="start center" fxLayoutGap="5px" style=" border-right: 2px solid #E2E2E2; padding: 5px;">
                         <img src="../../../assets/v3.png" style="width:20px;height : 15px">
-                        <span>0</span>
+                        <span>{{vehicleData?.vehicleOut}}</span>
                         <span class="font-size">VEHICLES OUT</span>
                     </div>
                     <div fxLayout="column" fxFlex="40" fxLayoutAlign="start center" fxLayoutGap="5px" style=" padding: 5px;">
@@ -38,6 +37,8 @@
                 </div>
             </div>
         </div>
+        <div class="margin-0">
+        </div>
         <div fxLayout="row" fxLayoutAlign="start stretch" class="bg-2 margin-left">
             <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="px" style="width: 100%;">
                 <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex = 100 style="padding:10px ;"> 
@@ -45,7 +46,7 @@
                         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="mm mn">
                             <span>Show</span>
                             <mat-form-field appearance="outline" style="width: 20%;">
-                                <mat-select [(ngModel)]="default">
+                                <mat-select [(ngModel)]="limit" (selectionChange)= "_apiCall(limit)">
                                   <mat-option *ngFor="let food of foods" [value]="food.viewValue">
                                     {{food.viewValue}}
                                   </mat-option>
@@ -79,7 +80,7 @@
                         <!-- Name Column -->
                         <ng-container matColumnDef="Date">
                           <th mat-header-cell *matHeaderCellDef> Date </th>
-                          <td mat-cell *matCellDef="let element"> {{element.date | date : 'dd/MM/yyyy' }} </td>
+                          <td mat-cell *matCellDef="let element"> {{element.date * 1000 | date : 'dd/MM/yyyy' }} </td>
                         </ng-container>
                       
                         <!-- Weight Column -->
@@ -120,6 +121,11 @@
                             </td>
                           </ng-container>
 
+                          <ng-container matColumnDef="Duration">
+                            <th mat-header-cell *matHeaderCellDef> Duration </th>
+                            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+                          </ng-container>
+
                         <tr style="background:  #E3E3E3;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
@@ -129,6 +135,7 @@
         </div>
         <div class="margin-left">
             <span>Showing 1 to 6 of 6 entries</span>
+
           </div>
     </div>
 </div>

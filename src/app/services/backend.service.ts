@@ -43,8 +43,8 @@ export class BackendService {
     return this.makePostApiCall(endpoint, payload).toPromise();
   }
 
-  getVehicleData(){
-    let url = `getVehicleData`
+  getVehicleData(payload){
+    let url = `getVehicleData?limit=${payload.limit}&page=${payload.page}`
     return this.makeGetApiCallToPromise(url)
   }
 }

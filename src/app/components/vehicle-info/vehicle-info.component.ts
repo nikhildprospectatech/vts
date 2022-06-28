@@ -20,32 +20,54 @@ export class VehicleInfoComponent implements OnInit {
       viewValue: 20
     }
   ];
+
+  page = 1;
+  limit = 5;
+
   inOutStatus :boolean = false;
-  default = 5;
   vehicleData;
   dataSource: MatTableDataSource<any>;
 
-  displayedColumns: string[] = ['Sl.No.', 'Date', 'Vehicle Number', 'Category', 'From Hour', 'To Hour', 'Check In/out'];
+  displayedColumns: string[] = ['Sl.No.', 'Date', 'Vehicle Number', 'Category', 'From Hour', 'To Hour', 'Check In/out', "Duration"];
   constructor(
     private backend: BackendService
   ) { }
 
   ngOnInit(): void {
-    this._apiCall(); 
+    this._apiCall(this.limit, this.page); 
   }
 
-  async _apiCall() {
-    let res = await this.backend.getVehicleData();
-    this.vehicleData = res;
-    this.dataSource = new MatTableDataSource(res);
+  async _apiCall( limit?, page?) {
+    let res = await this.backend.getVehicleData({limit : limit, page : page});
+    this.vehicleData = res[0];
+    this.dataSource = new MatTableDataSource(res[0].items);
   }
 
   toggle(val, item){
     this.inOutStatus = val.checked;
-    this.vehicleData.forEach(element => {
+    this.vehicleData.items.forEach(element => {
       if(element.vehicleNumber == item.vehicleNumber){
         element.currentStatus = val.checked
       }
     });
   }
+
+  // timeLeft: number = 60;
+  // interval;
+
+// startTimer() {
+//     this.interval = setInterval(() => {
+//       if(this.timeLeft > 0) {
+//         this.timeLeft--;
+//       } else {
+//         this.timeLeft = 60;
+
+//       }
+//     },1000)
+//   }
+
+//   pauseTimer() {
+//     clearInterval(this.interval);
+//   }
 }
+

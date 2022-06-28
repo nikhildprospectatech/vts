@@ -34,6 +34,10 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildNavigationMenu();
+
+    if (this.route.url.includes('/home/vehicle-info')) {
+      this.state = 'Vehicles Data';
+    }
   }
 
   buildNavigationMenu() {
@@ -43,7 +47,7 @@ export class SideNavComponent implements OnInit {
       {
         optionId: 1,
         displayName: 'Vehicles Data',
-        logo: '../assets/grp1.png',
+        logo: '../assets/nav1.png',
         isActive: true
       }
     ]
@@ -51,13 +55,13 @@ export class SideNavComponent implements OnInit {
   }
 
   navigate(val) {
-    console.log(val)
     let route : string;
     let queryParams = {};
     switch(val.optionId){
 
       case 1 :
           route = 'home/vehicle-info';
+          this.state = 'Vehicles Data';
         break;
 
       default :
