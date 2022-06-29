@@ -23,6 +23,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.component';
 import { MatTableModule } from "@angular/material/table";
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatSlideToggleModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
