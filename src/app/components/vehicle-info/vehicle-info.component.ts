@@ -84,31 +84,13 @@ export class VehicleInfoComponent implements OnInit {
   }
 
 
-  // durationCount(val){
-  //   console.log(val)
-
-  //   console.log(new Date(val.exitDate * 1000).toLocaleDateString())
-
-
-  //   return 
-  // }
-
-  // timeLeft: number = 60;
-  // interval;
-
-// startTimer() {
-//     this.interval = setInterval(() => {
-//       if(this.timeLeft > 0) {
-//         this.timeLeft--;
-//       } else {
-//         this.timeLeft = 60;
-
-//       }
-//     },1000)
-//   }
-
-//   pauseTimer() {
-//     clearInterval(this.interval);
-//   }
+  durationCount(val){
+    let dt2 = new Date(val.exitDate * 1000)
+    let dt1 = new Date(val.date * 1000)
+    
+    let diff = ( dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60)
+    return Math.abs(Math.round(diff))
+  }
 }
 
