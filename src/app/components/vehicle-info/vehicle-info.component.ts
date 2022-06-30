@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { BackendService } from 'src/app/services/backend.service';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-vehicle-info',
@@ -8,6 +9,9 @@ import { BackendService } from 'src/app/services/backend.service';
   styleUrls: ['./vehicle-info.component.css']
 })
 export class VehicleInfoComponent implements OnInit {
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   foods = [
     { viewValue: 5 },
     {
@@ -22,6 +26,8 @@ export class VehicleInfoComponent implements OnInit {
   ];
 
   page = 1;
+  pagelimit = 10;
+
   limit = 5;
 
   inOutStatus :boolean = false;
@@ -33,14 +39,16 @@ export class VehicleInfoComponent implements OnInit {
     private backend: BackendService
   ) { }
 
+
   ngOnInit(): void {
-    this._apiCall(this.limit, this.page); 
+    this._apiCall(this.pagelimit, this.page); 
   }
 
   async _apiCall( limit?, page?) {
     let res = await this.backend.getVehicleData({limit : limit, page : page});
     this.vehicleData = res[0];
     this.dataSource = new MatTableDataSource(res[0].items);
+    this.dataSource.paginator = this.paginator;
   }
 
   toggle(val, item){
@@ -51,6 +59,7 @@ export class VehicleInfoComponent implements OnInit {
       }
     });
   }
+
 
   // timeLeft: number = 60;
   // interval;

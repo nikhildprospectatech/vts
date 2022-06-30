@@ -2,7 +2,7 @@
     <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 100%;padding: 10px;" fxLayoutGap="20px" class="card">
         <div fxLayout="row" fxLayoutAlign="space-between stretch">
             <span style="font-weight:500;font-size: 20px;" >Dashboard</span>
-            <mat-icon style="margin-right: 1em; cursor: pointer; color :green" (click)="_apiCall(limit)">refresh</mat-icon>
+            <mat-icon style="margin-right: 1em; cursor: pointer; color :green" (click)="_apiCall(pagelimit, 1)">refresh</mat-icon>
         </div>
        
         <div fxLayout="row" fxLayoutAlign="space-between end"  class="margin-left ">
@@ -129,13 +129,11 @@
                         <tr style="background:  #E3E3E3;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
+                      <mat-paginator  [pageSize]="limit"  showFirstLastButtons></mat-paginator>
                 </div>
             </div>
        
         </div>
-        <div class="margin-left">
-            <span>Showing 1 to 6 of 6 entries</span>
-
-          </div>
+       
     </div>
 </div>
