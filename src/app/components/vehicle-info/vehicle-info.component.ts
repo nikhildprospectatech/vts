@@ -26,13 +26,14 @@ export class VehicleInfoComponent implements OnInit {
   ];
 
   page = 1;
-  pagelimit = 10;
+  pagelimit = 1000;
 
   limit = 5;
 
   inOutStatus :boolean = false;
   vehicleData;
   dataSource: MatTableDataSource<any>;
+  vehicleCount24hr = 0;
 
   displayedColumns: string[] = ['Sl.No.', 'Date', 'Vehicle Number', 'Category', 'From Hour', 'To Hour', 'Check In/out', "Duration"];
   constructor(
@@ -49,6 +50,7 @@ export class VehicleInfoComponent implements OnInit {
     this.vehicleData = res[0];
     this.dataSource = new MatTableDataSource(res[0].items);
     this.dataSource.paginator = this.paginator;
+    this.calc(res[0].items);
   }
 
   toggle(val, item){
@@ -60,23 +62,35 @@ export class VehicleInfoComponent implements OnInit {
     });
   }
 
+  calc(arr){
+    this.vehicleCount24hr = 0;
+    arr.forEach((el) => {
+     let hoursBetweenDates = this.isLessThan24HourAgo(new Date(el.date * 1000))
+     if(hoursBetweenDates){
+      this.vehicleCount24hr++
+     }
+    })
 
-  // timeLeft: number = 60;
-  // interval;
+    
+  }
 
-// startTimer() {
-//     this.interval = setInterval(() => {
-//       if(this.timeLeft > 0) {
-//         this.timeLeft--;
-//       } else {
-//         this.timeLeft = 60;
+  isLessThan24HourAgo(date) {
+    // hour  min  sec  milliseconds
+    const twentyFourHrInMs = 24 * 60 * 60 * 1000;
+  
+    const twentyFourHoursAgo = Date.now() - twentyFourHrInMs;
+  
+    return date > twentyFourHoursAgo && date <= Date.now();
+  }
 
-//       }
-//     },1000)
-//   }
 
-//   pauseTimer() {
-//     clearInterval(this.interval);
-//   }
+  durationCount(val){
+    let dt2 = new Date(val.exitDate * 1000)
+    let dt1 = new Date(val.date * 1000)
+    
+    let diff = ( dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60)
+    return Math.abs(Math.round(diff))
+  }
 }
 
