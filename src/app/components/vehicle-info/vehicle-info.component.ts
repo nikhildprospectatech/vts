@@ -60,10 +60,6 @@ export class VehicleInfoComponent implements OnInit {
     });
   }
 
-  onchangePagesize(val){
-console.log(val)
-    this._apiCall( this.pagelimit, this.page + 1);
-  }
 
   // timeLeft: number = 60;
   // interval;
