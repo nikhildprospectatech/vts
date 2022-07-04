@@ -24,7 +24,6 @@ import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.com
 import { MatTableModule } from "@angular/material/table";
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -58,8 +57,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatSlideToggleModule,
     MatTableModule,
     HttpClientModule,
-    MatPaginatorModule,
-    NgxPaginationModule
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
