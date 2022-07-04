@@ -94,8 +94,8 @@ export class VehicleInfoComponent implements OnInit {
     let diffMin = dt2.getTime() - dt1.getTime();
 
     let minutes = Math.floor(diffMin/ (1000 * 60) % 60)
-    let hr = Math.abs(Math.round(diff)) ? Math.abs(Math.round(diff)) : "--" ;
-    let min = minutes ? minutes : "--"
+    let hr = Math.abs(Math.round(diff)) ? Math.abs(Math.round(diff)) : "00" ;
+    let min = minutes ? minutes : "00"
 
 
     return hr +"   :   "+ min
