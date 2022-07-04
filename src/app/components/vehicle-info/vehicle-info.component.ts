@@ -47,7 +47,7 @@ export class VehicleInfoComponent implements OnInit {
 
   async _apiCall( limit?, page?) {
     let res = await this.backend.getVehicleData({limit : limit, page : page});
-    this.vehicleData = res[0];
+    this.vehicleData = res[0].items.forEach((el, i)=> el['id'] = i );
     this.dataSource = new MatTableDataSource(res[0].items);
     this.dataSource.paginator = this.paginator;
     this.calc(res[0].items);
@@ -80,7 +80,7 @@ export class VehicleInfoComponent implements OnInit {
   
     const twentyFourHoursAgo = Date.now() - twentyFourHrInMs;
   
-    return date > twentyFourHoursAgo && date <= Date.now();
+    return date < twentyFourHoursAgo && date <= Date.now();
   }
 
 
