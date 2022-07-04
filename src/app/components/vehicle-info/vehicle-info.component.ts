@@ -34,7 +34,6 @@ export class VehicleInfoComponent implements OnInit {
   vehicleData;
   dataSource: MatTableDataSource<any>;
   vehicleCount24hr = 0;
-  collection;
 
   displayedColumns: string[] = ['Sl.No.', 'Date', 'Vehicle Number', 'Category', 'From Hour', 'To Hour', 'Check In/out', "Duration"];
   constructor(
@@ -50,7 +49,6 @@ export class VehicleInfoComponent implements OnInit {
     let res = await this.backend.getVehicleData({limit : limit, page : page});
     this.vehicleData = res[0];
     this.dataSource = new MatTableDataSource(res[0].items);
-    this.collection = this.dataSource
     this.dataSource.paginator = this.paginator;
     this.calc(res[0].items);
   }
@@ -96,8 +94,14 @@ export class VehicleInfoComponent implements OnInit {
     let diffMin = dt2.getTime() - dt1.getTime();
 
     let minutes = Math.floor(diffMin/ (1000 * 60) % 60)
-    
-    return Math.abs(Math.round(diff)) + ':' + minutes
+    let time;
+
+    if( Math.abs(Math.round(diff)) && minutes){
+      time = Math.abs(Math.round(diff)) + ":" + minutes
+    }else{
+      time = "-  -"
+    }
+    return time
   }
 }
 
