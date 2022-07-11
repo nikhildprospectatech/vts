@@ -5,6 +5,7 @@ import { NavItem } from 'src/app/utils/navItem';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -19,6 +20,7 @@ export class SideNavComponent implements OnInit {
   email;
   isDisable : boolean = true;
   ismenu : boolean = false;
+  userData;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -30,14 +32,21 @@ export class SideNavComponent implements OnInit {
   constructor(
     private route: Router,
     private breakpointObserver: BreakpointObserver,
+    private backend : BackendService
   ) { }
 
   ngOnInit(): void {
+    this.email = localStorage.getItem('email')
+    this._apiCall();
     this.buildNavigationMenu();
-
     if (this.route.url.includes('/home/vehicle-info')) {
       this.state = 'Vehicles Data';
     }
+  }
+
+  async _apiCall(){
+    let res = await this.backend.getUser(this.email);
+    this.userData = res;
   }
 
   buildNavigationMenu() {

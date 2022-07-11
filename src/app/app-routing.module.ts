@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.component';
 
@@ -18,6 +19,10 @@ const routes: Routes = [
         component : VehicleInfoComponent
       }
     ]
+  },
+  {
+    path : "reg-user",
+    component : RegisterUserComponent
   }
 ];
 

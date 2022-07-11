@@ -1,0 +1,74 @@
+<div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx" style="height: 100%;">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="50" style="height: 100%;">
+        <div style="margin-bottom: 20px;">
+            <img src="../../../assets/bgn1.png"  style="width: 17%;"/>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end stretch">
+            <div fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="35px">
+                <div fxLayout="row" fxLayoutAlign="start stretch" style="width: 70%;">
+                    <span style="font-size: 30px; color:#949494; font-weight: 500;">Create your account</span>
+                </div>
+
+                <img src="../../../assets/backDrop.png" class="img" />
+            </div>
+        </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-between end" fxLayoutGap="gappx" fxFlex="50" style="height: 100%;">
+        <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 65%;" class="align" fxLayoutGap="20px" >
+            <form class="example-form" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="6px" [formGroup] = "userRegistrationForm" >
+                <span class="font-style">Name</span>
+                <mat-form-field class="example-full-width" appearance="">
+                    <input matInput placeholder="Enter your Name" formControlName = "fullName">
+                </mat-form-field>
+                <mat-error *ngIf="f.fullName.invalid && (f.fullName.dirty || f.fullName.touched)" >
+                    {{getErrorMessage('fullName')}}
+                  </mat-error>
+
+                <span class="font-style">E-MAIL ADDRESS</span>
+                <mat-form-field class="example-full-width" appearance="">
+                    <input matInput placeholder="Enter your email address" formControlName = "email">
+                </mat-form-field>
+                <mat-error *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" >
+                    {{getErrorMessage('email')}}
+                  </mat-error>
+                
+                <span class="font-style">PASSWORD</span>
+                <mat-form-field class="example-full-width" appearance="">
+                    <input matInput placeholder="Enter Password" formControlName = "password" >
+                </mat-form-field>
+                <mat-error *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                    {{getErrorMessage('password')}}
+                  </mat-error>
+                <span class="font-style">CONFIRM PASSWORD</span>
+                <mat-form-field class="example-full-width" appearance="">
+                    <input matInput  placeholder="Enter your Password again" type="password" formControlName = "confirmPassword">
+                </mat-form-field>
+                <mat-error *ngIf="f.confirmPassword.invalid && (f.confirmPassword.dirty || f.confirmPassword.touched)">
+                    Confirm password is Required!
+                  </mat-error>
+                  <mat-error
+                    *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid && f.confirmPassword.errors.confirmValidator">
+                    Password doesn't Match!
+                  </mat-error>
+            </form>
+
+            <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px" >
+                <mat-checkbox></mat-checkbox>
+
+                <div>
+                    <span style="color:#949494;">I accept the</span> <span style="color: #4D3FD8;"> Terms of Use</span> <span style="color:#949494;"> & </span><span style="color: #4D3FD8;">Privacy Policy</span>                
+                </div>
+            </div>
+
+            <div style="width: 100%;">
+                <button (click)="submit()" [disabled] = "!userRegistrationForm.valid"  [ngClass]="{'opacity': !userRegistrationForm.valid}" style="width: 100%; background-color: #4D3FD8; color: #ffff;" mat-button>Register Now</button>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="5px">
+                <span style="color:#949494;">Already Have an Account?</span> <span style="color: #017EFA; cursor: pointer;">Login Here</span>
+            </div>
+        </div>
+        <div  fxLayout="row" fxLayoutAlign="end stretch" fxLayoutGap="gappx">
+            <img src="../../../assets/bgn2.png" style="width: 75%;" />
+        </div>
+    </div>
+</div>
