@@ -1,0 +1,21 @@
+.img{
+    width: 595px;
+    height: 430px;
+}
+
+.align {
+    position: relative;
+    top: 22%;
+    right:25%
+}
+
+.font-style {
+    color: #6B747D;
+    font-weight: 500;
+}
+
+.opacity{
+    opacity: 0.5 !important;
+    background-color: #4D3FD8 !important; 
+    color: #ffff !important;
+}

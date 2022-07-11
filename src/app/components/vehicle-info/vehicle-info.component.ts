@@ -89,7 +89,6 @@ export class VehicleInfoComponent implements OnInit {
   durationCount(val){
     let dt2 =  new Date(val.exitDate * 1000);
     let dt1 = new Date(val.date * 1000)
-    console.log(dt2.toLocaleTimeString("en-US", { hour12 : true, minute: "2-digit", hour : "2-digit" }))
     let diff = ( dt2.getTime() - dt1.getTime()) / 1000;
     diff /= (60 * 60)
   

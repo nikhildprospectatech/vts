@@ -47,4 +47,13 @@ export class BackendService {
     let url = `getVehicleData?limit=${payload.limit}&page=${payload.page}`
     return this.makeGetApiCallToPromise(url)
   }
+
+  saveUser(payload){
+    return this.makePostApiCall('apiRegUserdata', payload)
+  }
+
+  getUser(email){
+    let url = `getUser?email=${email}`
+    return this.makeGetApiCallToPromise(url)
+  }
 }

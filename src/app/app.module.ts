@@ -24,12 +24,16 @@ import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.com
 import { MatTableModule } from "@angular/material/table";
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
-    VehicleInfoComponent
+    VehicleInfoComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSlideToggleModule,
     MatTableModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
