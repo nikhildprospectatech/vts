@@ -33,7 +33,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  bgsColor: '#4dd3d1',
+  bgsColor: '#2f95d1',
   bgsOpacity: 0.5,
   bgsPosition: 'bottom-right',
   bgsSize: 60,
@@ -41,7 +41,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   blur: 5,
   delay: 0,
   fastFadeOut: true,
-  fgsColor: '#4dd3d1',
+  fgsColor: '#2f95d1',
   fgsPosition: 'center-center',
   fgsSize: 60,
   fgsType: 'three-strings',
@@ -52,12 +52,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   masterLoaderId: 'master',
   overlayBorderRadius: '0',
   overlayColor: 'rgba(40, 40, 40, 0.8)',
-  pbColor: '#4dd3d1',
+  pbColor: '#2f95d1',
   pbDirection: 'ltr',
   pbThickness: 3,
   hasProgressBar: true,
-  text: 'Aviator Co2....',
-  textColor: '#4dd3d1',
+  text: 'VTS....',
+  textColor: '#2f95d1',
   textPosition: 'center-center',
   maxTime: -1,
   minTime: 300,
