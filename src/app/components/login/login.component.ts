@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, Routes } from '@angular/router';
 import { BackendService } from 'src/app/services/backend.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,14 @@ import { BackendService } from 'src/app/services/backend.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm : FormGroup;
+  loginForm : UntypedFormGroup;
   showPassword : boolean = false;
 
   constructor(
-    private fb : FormBuilder,
+    private fb : UntypedFormBuilder,
     private backend : BackendService,
     private route : Router,
+    private ngxService : NgxUiLoaderService,
     private _snackBar : MatSnackBar
   ) { }
 
@@ -54,7 +56,7 @@ export class LoginComponent implements OnInit {
 
   submit(){
     console.log(this.loginForm.value)
-
+    this.ngxService.start();
     this.backend.login(this.loginForm.value).subscribe(res => {
       if(res.success){
         this._snackBar.open("login successfully", "ok",{
@@ -63,12 +65,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('accessToken', res.token);
         localStorage.setItem("email" , res?.email)
         this.route.navigate(['/home/vehicle-info'])
+        this.ngxService.stop()
         return
       }
 
       this._snackBar.open("Invalid credentials", "ok", {
         duration:3000
       })
+
+      this.ngxService.stop()
 
     })
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BackendService } from 'src/app/services/backend.service';
@@ -11,11 +11,11 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class RegisterUserComponent implements OnInit {
 
-  userRegistrationForm: FormGroup;
+  userRegistrationForm: UntypedFormGroup;
   state;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private backend : BackendService,
     private _snackBar : MatSnackBar,
     private route : Router
@@ -67,7 +67,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   confirmValidator(controlName: string, matchingControl: string) {
-    return (formGroup: FormGroup) => {
+    return (formGroup: UntypedFormGroup) => {
       const control = formGroup.controls[controlName];
       const matchControl = formGroup.controls[matchingControl];
 

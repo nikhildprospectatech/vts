@@ -22,13 +22,50 @@ import { MatCardModule } from "@angular/material/card";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.component';
 import { MatTableModule } from "@angular/material/table";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './components/login/login.component';
+import { NgxUiLoaderConfig, NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: '#2f95d1',
+  bgsOpacity: 0.5,
+  bgsPosition: 'bottom-right',
+  bgsSize: 60,
+  bgsType: 'ball-spin-clockwise',
+  blur: 5,
+  delay: 0,
+  fastFadeOut: true,
+  fgsColor: '#2f95d1',
+  fgsPosition: 'center-center',
+  fgsSize: 60,
+  fgsType: 'three-strings',
+  gap: 24,
+  logoPosition: 'center-center',
+  logoSize: 120,
+  logoUrl: '',
+  masterLoaderId: 'master',
+  overlayBorderRadius: '0',
+  overlayColor: 'rgba(40, 40, 40, 0.8)',
+  pbColor: '#2f95d1',
+  pbDirection: 'ltr',
+  pbThickness: 3,
+  hasProgressBar: true,
+  text: 'VTS....',
+  textColor: '#2f95d1',
+  textPosition: 'center-center',
+  maxTime: -1,
+  minTime: 300,
+};
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +102,17 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxUiLoaderRouterModule,
+    NgxUiLoaderHttpModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (HttpLoaderFactory),
+          deps: [HttpClient]
+      }
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]

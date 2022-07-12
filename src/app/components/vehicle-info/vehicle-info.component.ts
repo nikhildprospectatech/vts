@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { BackendService } from 'src/app/services/backend.service';
 import {MatPaginator} from '@angular/material/paginator';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-vehicle-info',
@@ -38,7 +39,8 @@ export class VehicleInfoComponent implements OnInit {
 
   displayedColumns: string[] = ['Sl.No.', 'Date', 'Vehicle Number', 'Category', 'From Hour', 'To Hour', 'Check In/out', "Duration"];
   constructor(
-    private backend: BackendService
+    private backend: BackendService,
+    private ngxService : NgxUiLoaderService
   ) { }
 
 
@@ -47,12 +49,14 @@ export class VehicleInfoComponent implements OnInit {
   }
 
   async _apiCall( limit?, page?) {
+    this.ngxService.start();
     let res = await this.backend.getVehicleData({limit : limit, page : page});
     this.vCount = res[0];
     this.vehicleData = res[0].items.forEach((el, i)=> el['id'] = i );
     this.dataSource = new MatTableDataSource(res[0].items);
     this.dataSource.paginator = this.paginator;
     this.calc(res[0].items);
+    this.ngxService.stop();
   }
 
   toggle(val, item){
