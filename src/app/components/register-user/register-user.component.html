@@ -53,7 +53,7 @@
             </form>
 
             <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px" >
-                <mat-checkbox></mat-checkbox>
+                <mat-checkbox (change) = 'state = $event.checked' ></mat-checkbox>
 
                 <div>
                     <span style="color:#949494;">I accept the</span> <span style="color: #4D3FD8;"> Terms of Use</span> <span style="color:#949494;"> & </span><span style="color: #4D3FD8;">Privacy Policy</span>                
@@ -61,7 +61,7 @@
             </div>
 
             <div style="width: 100%;">
-                <button (click)="submit()" [disabled] = "!userRegistrationForm.valid"  [ngClass]="{'opacity': !userRegistrationForm.valid}" style="width: 100%; background-color: #4D3FD8; color: #ffff;" mat-button>Register Now</button>
+                <button (click)="submit()" [disabled] = "!(userRegistrationForm.valid && state)"  [ngClass]="{'opacity': !(userRegistrationForm.valid && state)}" style="width: 100%; background-color: #4D3FD8; color: #ffff;" mat-button>Register Now</button>
             </div>
             <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="5px">
                 <span style="color:#949494;">Already Have an Account?</span> <span style="color: #017EFA; cursor: pointer;" routerLink="/login">Login Here</span>
