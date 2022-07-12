@@ -1,0 +1,53 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" style="height:100%" class="bg-img">
+    <div fxLayout="row" fxLayoutAlign="start stretch" fxFlex="100">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx" fxFlex='43'>
+            <form [formGroup] = 'loginForm' fxLayout="column" fxLayoutAlign="start stretch" class="bg-color" style="width: 60%; padding: 15px;">
+                <div fxLayout="row" fxLayoutAlign="space-around  stretch"  style="margin-top: 5em;margin-bottom: 1em;">
+                    <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 94%">
+                        <span style="color: #5B5050;font-weight:500;font-size: large;">
+                            Email
+                        </span>
+                        <mat-form-field appearance="outline">
+                            <input matInput placeholder="Enter your Email Address" formControlName = "email" autocomplete="off">
+                            <mat-icon matPrefix style="margin-right: 12px;color: 
+                            #6ba1f2;"> email</mat-icon>
+                        </mat-form-field>
+                        <mat-error *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" >
+                            {{getErrorMessage('email')}}
+                          </mat-error>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-around stretch" >
+                    <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 94%">
+                        <span style="color: #5B5050;font-weight:500;font-size: large;">
+                            password
+                        </span>
+                        <mat-form-field appearance="outline">
+                            <input matInput placeholder="Enter your password" [type]="showPassword ? 'text' : 'password'" formControlName = "password" autocomplete="off">
+                            <mat-icon matPrefix style="margin-right: 12px; color:#6ba1f2;">lock_open</mat-icon>
+                            <mat-icon matSuffix style="color: #6ba1f2; cursor: pointer;" (click) = "showPass(showPassword)">
+                            {{  showPassword ? "visibility" : "visibility_off" }}
+                            </mat-icon>
+                        </mat-form-field>
+                        <mat-error *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                            {{getErrorMessage('password')}}
+                          </mat-error>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between stretch" style="width:93%; margin-bottom: 3em;margin-left: 8px;">
+                    <span style="color:#4891FF;cursor: pointer;" routerLink = '/reg-user'> Signup </span>
+                    <span  style="color:#4891FF;" >Forgot password?</span>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center stretch" style="margin-bottom:3em;">
+                 <button [disabled] = "!loginForm.valid" mat-button style="width: 40%; border-radius: 20px; background-color: 
+                 #4891FF; color: #ffff;" [ngClass]="{'opacity': !loginForm.valid}" (click)="submit()"> LOGIN </button>
+                </div>
+            </form>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start stretch"  fxLayoutGap="gappx" fxFlex="50">
+            <img style="height: 450px; width: 700px;" class="margin-top" src="../../../assets/cslogo.png" alt="">
+        </div>
+    </div>
+</div>

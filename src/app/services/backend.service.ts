@@ -56,4 +56,9 @@ export class BackendService {
     let url = `getUser?email=${email}`
     return this.makeGetApiCallToPromise(url)
   }
+
+  login(payload){
+    // let url = `login?email=${payload.email}&password=${payload.password}`
+    return this.makeGetApiCall('login', {email :payload.email, password :payload.password });
+  }
 }

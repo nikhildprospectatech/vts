@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.component';
@@ -7,7 +8,7 @@ import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.com
 const routes: Routes = [
   {
     path : '',
-    redirectTo : 'home',
+    redirectTo : 'login',
     pathMatch : 'full'
   },
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path : "reg-user",
     component : RegisterUserComponent
+  },
+  {
+    path : "login",
+    component : LoginComponent
   }
 ];
 
