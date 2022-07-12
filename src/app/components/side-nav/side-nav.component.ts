@@ -83,7 +83,10 @@ export class SideNavComponent implements OnInit {
   }
 
   signOut(){
-
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("email");
+      this.route.navigate(['/login'])
+    
   }
 
 }

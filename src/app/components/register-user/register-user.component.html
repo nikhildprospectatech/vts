@@ -18,7 +18,7 @@
             <form class="example-form" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="6px" [formGroup] = "userRegistrationForm" >
                 <span class="font-style">Name</span>
                 <mat-form-field class="example-full-width" appearance="">
-                    <input matInput placeholder="Enter your Name" formControlName = "fullName">
+                    <input matInput placeholder="Enter your Name" formControlName = "fullName" autocomplete="off">
                 </mat-form-field>
                 <mat-error *ngIf="f.fullName.invalid && (f.fullName.dirty || f.fullName.touched)" >
                     {{getErrorMessage('fullName')}}
@@ -26,7 +26,7 @@
 
                 <span class="font-style">E-MAIL ADDRESS</span>
                 <mat-form-field class="example-full-width" appearance="">
-                    <input matInput placeholder="Enter your email address" formControlName = "email">
+                    <input matInput placeholder="Enter your email address" formControlName = "email" autocomplete="off">
                 </mat-form-field>
                 <mat-error *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" >
                     {{getErrorMessage('email')}}
@@ -34,14 +34,14 @@
                 
                 <span class="font-style">PASSWORD</span>
                 <mat-form-field class="example-full-width" appearance="">
-                    <input matInput placeholder="Enter Password" formControlName = "password" >
+                    <input matInput placeholder="Enter Password" formControlName = "password" autocomplete="off">
                 </mat-form-field>
                 <mat-error *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
                     {{getErrorMessage('password')}}
                   </mat-error>
                 <span class="font-style">CONFIRM PASSWORD</span>
                 <mat-form-field class="example-full-width" appearance="">
-                    <input matInput  placeholder="Enter your Password again" type="password" formControlName = "confirmPassword">
+                    <input matInput  placeholder="Enter your Password again" type="password" autocomplete="off" formControlName = "confirmPassword">
                 </mat-form-field>
                 <mat-error *ngIf="f.confirmPassword.invalid && (f.confirmPassword.dirty || f.confirmPassword.touched)">
                     Confirm password is Required!
@@ -64,7 +64,7 @@
                 <button (click)="submit()" [disabled] = "!userRegistrationForm.valid"  [ngClass]="{'opacity': !userRegistrationForm.valid}" style="width: 100%; background-color: #4D3FD8; color: #ffff;" mat-button>Register Now</button>
             </div>
             <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="5px">
-                <span style="color:#949494;">Already Have an Account?</span> <span style="color: #017EFA; cursor: pointer;">Login Here</span>
+                <span style="color:#949494;">Already Have an Account?</span> <span style="color: #017EFA; cursor: pointer;" routerLink="/login">Login Here</span>
             </div>
         </div>
         <div  fxLayout="row" fxLayoutAlign="end stretch" fxLayoutGap="gappx">

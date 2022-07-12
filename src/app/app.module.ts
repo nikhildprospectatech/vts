@@ -27,13 +27,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
     VehicleInfoComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
