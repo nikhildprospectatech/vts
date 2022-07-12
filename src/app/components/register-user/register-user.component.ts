@@ -12,6 +12,7 @@ import { BackendService } from 'src/app/services/backend.service';
 export class RegisterUserComponent implements OnInit {
 
   userRegistrationForm: FormGroup;
+  state;
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +52,7 @@ export class RegisterUserComponent implements OnInit {
       if (res.success){
         localStorage.setItem("accessToken" , res?.token)
         localStorage.setItem("email" , res?.email)
-        this._snackBar.open("user stored successfully", 'ok', {
+        this._snackBar.open("user registered successfully", 'ok', {
           duration : 3000
         });
         this.route.navigate(['/home/vehicle-info'])
