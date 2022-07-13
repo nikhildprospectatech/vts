@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+    <span style="font-size: x-large;
+    font-weight: 500; color:#696969">
+        Forgot Your Password
+    </span>
+
+    <span style="color:rgb(165 159 159)">
+        Please enter the email address you'd like your password reset information sent to
+    </span>
+
+    <div class="mm">
+        <span style="font-size: large;color:#696969">
+            Enter email address
+        </span>
+        <mat-form-field appearance="outline" style="width:100%">
+            <input matInput type="text" [(ngModel)]="forgotEmail" autocomplete="off">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button [disabled]="!forgotEmail" [ngClass]="{'opacity': !forgotEmail}" (click)="resetFunc()" mat-button style="background: #4891FF; width:100%; color: #ffff;"> Request reset link </button>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon style="cursor: pointer;" (click)="close()">arrow_back</mat-icon><button mat-button (click)="close()" >Back To Login</button>
+    </div>
+</div>

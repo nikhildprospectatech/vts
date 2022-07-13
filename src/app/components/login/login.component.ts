@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, Routes } from '@angular/router';
 import { BackendService } from 'src/app/services/backend.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ForgotPassComponent } from '../forgot-pass/forgot-pass.component';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
     private backend : BackendService,
     private route : Router,
     private ngxService : NgxUiLoaderService,
-    private _snackBar : MatSnackBar
+    private _snackBar : MatSnackBar,
+    private matDialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -80,8 +83,19 @@ export class LoginComponent implements OnInit {
   }
 
   showPass(val){
-    console.log(val)
     this.showPassword = !val
+  }
+
+  openDialog(){
+   const dialogClose = this.matDialog.open( ForgotPassComponent, {
+      width : "400px",
+      disableClose : true
+    } )
+
+    dialogClose.afterClosed().subscribe(res => {
+      
+    })
+
   }
 
 }

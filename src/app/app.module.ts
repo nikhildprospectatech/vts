@@ -31,6 +31,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NgxUiLoaderConfig, NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#2f95d1',
@@ -72,7 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SideNavComponent,
     VehicleInfoComponent,
     RegisterUserComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPassComponent
   ],
   imports: [
     BrowserModule,
@@ -105,6 +108,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSnackBarModule,
     NgxUiLoaderRouterModule,
     NgxUiLoaderHttpModule,
+    MatDialogModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     TranslateModule.forRoot({
       loader: {
