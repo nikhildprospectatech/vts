@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class RegisterUserComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private backend : BackendService,
     private _snackBar : MatSnackBar,
-    private route : Router
+    private route : Router,
+    private ngxService : NgxUiLoaderService 
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class RegisterUserComponent implements OnInit {
     if(!this.userRegistrationForm.valid){
       return
     }
-
+    this.ngxService.start();
     this.backend.saveUser(this.userRegistrationForm.value).subscribe( res => {
       if (res.success){
         localStorage.setItem("accessToken" , res?.token)
@@ -56,12 +58,14 @@ export class RegisterUserComponent implements OnInit {
           duration : 3000
         });
         this.route.navigate(['/home/vehicle-info'])
+        this.ngxService.stop();
         return
       }
 
       this._snackBar.open( res.message, 'ok', {
         duration : 3000
       });
+      this.ngxService.stop();
     })
     
   }

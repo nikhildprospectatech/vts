@@ -34,7 +34,7 @@ export class BackendService {
   // make a POST API request and returns Observable
   makePostApiCall(endpoint: string, payload: any): Observable<any> {
     let headers: HttpHeaders = this.getHeaders();
-    let url = `${environment.apiBaseUrl}/${endpoint}`;
+    let url = `${environment.apiBaseUrl}${endpoint}`;
     return this.http.post(url, payload, { headers });
   }
 
@@ -60,5 +60,9 @@ export class BackendService {
   login(payload){
     // let url = `login?email=${payload.email}&password=${payload.password}`
     return this.makeGetApiCall('login', {email :payload.email, password :payload.password });
+  }
+
+  sendForgot(payload){
+    return this.makePostApiCall('forgotPass', payload)
   }
 }
