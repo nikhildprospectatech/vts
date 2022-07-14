@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { VehicleInfoComponent } from './components/vehicle-info/vehicle-info.component';
 
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path : "login",
     component : LoginComponent
+  },
+  {
+    path : 'resetPass',
+    component : ResetPassComponent
   }
 ];
 

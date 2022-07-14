@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+
+    <div fxLayout="row" fxLayoutAlign="start stretch" class="border" fxFlex="30">
+        <form fxLayout="column" fxLayoutAlign="start stretch" style="padding: 1em;" fxFlex="100" [formGroup] = 'resetForm'>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput placeholder="Enter new password" formControlName = "newPass" >
+            </mat-form-field>
+            <mat-error *ngIf="f.newPass.invalid && (f.newPass.dirty || f.newPass.touched)">
+                {{getErrorMessage('newPass')}}
+              </mat-error>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput placeholder="confirm password" formControlName = "confirmPass">
+            </mat-form-field>
+              <mat-error
+                *ngIf="f.confirmPass.touched && f.confirmPass.invalid && f.confirmPass.errors.confirmValidator">
+                Password doesn't Match!
+              </mat-error>
+
+            <button mat-button [ngClass]="{'opacity': !resetForm.valid}" style="background: #4891FF;color: #ffffff;" [disabled]="!resetForm.valid" (click) = "submit()" > reset</button>
+        </form>
+    </div>
+</div>
