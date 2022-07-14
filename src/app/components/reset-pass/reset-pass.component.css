@@ -1,0 +1,10 @@
+.border {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+.opacity{
+    opacity: 0.5;
+    background: #4891FF;
+    color: #FFFFFF;
+}

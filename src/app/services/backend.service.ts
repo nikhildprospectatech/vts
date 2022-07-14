@@ -65,4 +65,8 @@ export class BackendService {
   sendForgot(payload){
     return this.makePostApiCall('forgotPass', payload)
   }
+
+  resetPass(payload){
+    return this.makePostApiCall('passwordReset',payload)
+  }
 }
