@@ -30,7 +30,7 @@ export class ForgotPassComponent implements OnInit {
   resetFunc(){
     this.ngxService.start();
     this.backend.sendForgot({forgotPass : this.forgotEmail}).subscribe(res => {
-      if(res){
+      if(!res.msg){
         this._snackBar.open("Password reset link sent to registered Email Address", '', {
           duration: 3000
         })
@@ -38,7 +38,9 @@ export class ForgotPassComponent implements OnInit {
         this.ngxService.stop()
         return
       }
-
+      this._snackBar.open(res.msg, '', {
+        duration: 3000
+      })
       this.ngxService.stop()
     })
   }

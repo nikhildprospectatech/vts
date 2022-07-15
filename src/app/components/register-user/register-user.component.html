@@ -34,7 +34,10 @@
                 
                 <span class="font-style">PASSWORD</span>
                 <mat-form-field class="example-full-width" appearance="">
-                    <input matInput placeholder="Enter Password" formControlName = "password" autocomplete="off">
+                    <input matInput placeholder="Enter Password" [type]="showPassword ? 'text' : 'password'" formControlName = "password" autocomplete="off">
+                    <mat-icon matSuffix style="color: #6ba1f2; cursor: pointer;" (click) = "showPass(showPassword)">
+                        {{  showPassword ? "visibility" : "visibility_off" }}
+                        </mat-icon>
                 </mat-form-field>
                 <mat-error *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
                     {{getErrorMessage('password')}}

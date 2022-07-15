@@ -14,6 +14,7 @@ export class RegisterUserComponent implements OnInit {
 
   userRegistrationForm: UntypedFormGroup;
   state;
+  showPassword : boolean = false;
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -110,6 +111,10 @@ export class RegisterUserComponent implements OnInit {
         ? 'Not a valid email'
         : '';
     }
+  }
+
+  showPass(val){
+    this.showPassword = !val
   }
 
 }

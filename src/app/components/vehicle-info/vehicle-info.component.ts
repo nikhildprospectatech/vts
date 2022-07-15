@@ -52,10 +52,10 @@ export class VehicleInfoComponent implements OnInit {
     this.ngxService.start();
     let res = await this.backend.getVehicleData({limit : limit, page : page});
     this.vCount = res[0];
-    this.vehicleData = res[0].items.forEach((el, i)=> el['id'] = i );
-    this.dataSource = new MatTableDataSource(res[0].items);
+    this.vehicleData = res[0]?.items?.forEach((el, i)=> el['id'] = i );
+    this.dataSource = new MatTableDataSource(res[0]?.items);
     this.dataSource.paginator = this.paginator;
-    this.calc(res[0].items);
+    this.calc(res[0]?.items);
     this.ngxService.stop();
   }
 
@@ -70,7 +70,7 @@ export class VehicleInfoComponent implements OnInit {
 
   calc(arr){
     this.vehicleCount24hr = 0;
-    arr.forEach((el) => {
+    arr?.forEach((el) => {
      let hoursBetweenDates = this.isLessThan24HourAgo(new Date(el.date * 1000))
      if(hoursBetweenDates){
       this.vehicleCount24hr++
