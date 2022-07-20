@@ -42,6 +42,10 @@ export class SideNavComponent implements OnInit {
     if (this.route.url.includes('/home/vehicle-info')) {
       this.state = 'Vehicles Data';
     }
+
+    if (this.route.url.includes('/home/dashboard')) {
+      this.state = 'Dashboard';
+    }
   }
 
   async _apiCall(){
@@ -52,9 +56,14 @@ export class SideNavComponent implements OnInit {
   buildNavigationMenu() {
 
     let menu: NavItem[] = [
-
       {
         optionId: 1,
+        displayName: 'Dashboard',
+        logo : '../assets/nav1.png',
+        isActive : true
+      },
+      {
+        optionId: 2,
         displayName: 'Vehicles Data',
         logo: '../assets/nav1.png',
         isActive: true
@@ -69,12 +78,17 @@ export class SideNavComponent implements OnInit {
     switch(val.optionId){
 
       case 1 :
+        route = 'home/dashboard';
+        this.state = 'Dashboard';
+        break;
+
+      case 2 :
           route = 'home/vehicle-info';
           this.state = 'Vehicles Data';
         break;
 
       default :
-      route = 'vehicle-info';
+      route = 'Dashboard';
         break;
 
     }

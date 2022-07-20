@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
     path : "home",
     component : SideNavComponent,
     children : [
+      {
+        path : "dashboard",
+        component : DashboardComponent
+      },
       {
         path : "vehicle-info",
         component : VehicleInfoComponent

@@ -1,22 +1,33 @@
-<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;" class="bg-bag">
 
     <div fxLayout="row" fxLayoutAlign="start stretch" class="border" fxFlex="30">
-        <form fxLayout="column" fxLayoutAlign="start stretch" style="padding: 1em;" fxFlex="100" [formGroup] = 'resetForm'>
+        <form fxLayout="column" fxLayoutAlign="start stretch" style="padding: 2em;" fxLayoutGap="20px" fxFlex="100" [formGroup] = 'resetForm'>
+          <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+            <span style="color: #696969; font-size: x-large;">Reset Your Password</span>
+            <span style="color: #727272; font-size: small;">
+              Please Enter your new password and retype your password again to confirm it.
+            </span>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10ppx">
+            <span>New Password</span>
             <mat-form-field appearance="outline" style="width: 100%;">
                 <input matInput placeholder="Enter new password" formControlName = "newPass" >
             </mat-form-field>
             <mat-error *ngIf="f.newPass.invalid && (f.newPass.dirty || f.newPass.touched)">
                 {{getErrorMessage('newPass')}}
               </mat-error>
+          <span>Retype password</span>
             <mat-form-field appearance="outline" style="width: 100%;">
                 <input matInput placeholder="confirm password" formControlName = "confirmPass">
             </mat-form-field>
               <mat-error
                 *ngIf="f.confirmPass.touched && f.confirmPass.invalid && f.confirmPass.errors.confirmValidator">
-                Password doesn't Match!
+                New Password and Retype Password must be identical
               </mat-error>
-
-            <button mat-button [ngClass]="{'opacity': !resetForm.valid}" style="background: #4891FF;color: #ffffff;" [disabled]="!resetForm.valid" (click) = "submit()" > reset</button>
+          </div>
+            <button mat-button [ngClass]="{'opacity': !resetForm.valid}" style="background: 
+            #45AC7C;width:50%;color: #ffffff;" [disabled]="!resetForm.valid" (click) = "submit()" > Submit</button>
         </form>
     </div>
 </div>

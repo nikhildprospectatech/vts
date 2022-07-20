@@ -34,6 +34,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#2f95d1',
@@ -77,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterUserComponent,
     LoginComponent,
     ForgotPassComponent,
-    ResetPassComponent
+    ResetPassComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

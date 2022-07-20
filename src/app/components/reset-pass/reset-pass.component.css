@@ -8,3 +8,9 @@
     background: #4891FF;
     color: #FFFFFF;
 }
+.bg-bag{
+    background :url('../../../assets/logBg.png');
+    background-repeat: no-repeat;
+    background-size:  contain;
+    background-blend-mode:hard-light;
+}
