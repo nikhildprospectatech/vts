@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center stretch" fxFlex='100' style="height: 100%; padding: 15px;">
-    <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 100%;padding: 10px;"class="card">
+    <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 100%;padding: 10px;"class="card" fxLayoutGap="20px">
 
-        <div fxLayout="row" fxLayoutAlign="start stretch"  style="margin-top: 1em;margin-left:1em">
+        <div fxLayout="row" fxLayoutAlign="start stretch" class="margin-top margin-left"  >
             <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="30" fxLayoutGap="gappx">
                 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
                     <div>
@@ -14,7 +14,16 @@
             </div>
         </div>
 
-        <div>
-            
+        <div class="margin-left" fxLayout="row" fxLayoutAlign="start stretch" style="background-color:#F9F9F9;padding: 10px;">
+            <div class="chart-wrapper" style="width:80%" >
+                <canvas baseChart 
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                >
+              </canvas>
+            </div>
         </div>
         </div>

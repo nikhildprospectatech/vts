@@ -2,3 +2,11 @@
     background: #FFFFFF;
 border-radius: 20px;
 }
+
+.margin-top{
+    margin-top: 1em !important;
+}
+
+.margin-left{
+    margin-left: 2em !important;
+}

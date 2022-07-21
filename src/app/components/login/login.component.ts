@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         })
         localStorage.setItem('accessToken', res.token);
         localStorage.setItem("email" , res?.email)
-        this.route.navigate(['/home/vehicle-info'])
+        this.route.navigate(['/home/dashboard'])
         this.ngxService.stop()
         return
       }

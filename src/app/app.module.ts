@@ -35,6 +35,7 @@ import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NgChartsModule } from 'ng2-charts'
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#2f95d1',
@@ -113,6 +114,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxUiLoaderRouterModule,
     NgxUiLoaderHttpModule,
     MatDialogModule,
+    NgChartsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     TranslateModule.forRoot({
       loader: {
