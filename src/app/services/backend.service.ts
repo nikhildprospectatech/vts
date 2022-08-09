@@ -69,4 +69,9 @@ export class BackendService {
   resetPass(payload){
     return this.makePostApiCall('passwordReset',payload)
   }
+
+  getDashboardData(){
+    let url = `dashboard`
+    return  this.makeGetApiCallToPromise(url)
+  }
 }

@@ -10,3 +10,7 @@ border-radius: 20px;
 .margin-left{
     margin-left: 2em !important;
 }
+
+.gray{
+    background-color: lightgrey !important;
+}

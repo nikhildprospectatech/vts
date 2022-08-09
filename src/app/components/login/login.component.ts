@@ -87,6 +87,7 @@ export class LoginComponent implements OnInit {
   }
 
   openDialog(){
+    
    const dialogClose = this.matDialog.open( ForgotPassComponent, {
       width : "400px",
       disableClose : true
