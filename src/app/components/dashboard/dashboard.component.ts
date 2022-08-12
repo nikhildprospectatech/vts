@@ -14,10 +14,12 @@ export class DashboardComponent implements OnInit {
 
   vehicleData;
   status: boolean = true;
+  daysArr = {};
 
   ngOnInit(): void {
 
     this.apiCall();
+    this.initialize();
   }
 
   barChartOptions: ChartOptions = {
@@ -42,29 +44,7 @@ export class DashboardComponent implements OnInit {
   barChartLegend = true;
   barChartPlugins = [];
 
-  barChartData: ChartDataset[] = [
-    {
-      backgroundColor: "#1D4ED8",
-      hoverBackgroundColor: "#1D4ED8",
-      data: [0, 10, 15,],
-      label: '',
-      barPercentage: 0.2
-    },
-    {
-      backgroundColor: "#33BFFF",
-      hoverBackgroundColor: "#33BFFF",
-      data: [20, 10, 15],
-      label: '4 Wheeler',
-      barPercentage: 0.2,
-    },
-    {
-      backgroundColor: "#22C55E",
-      hoverBackgroundColor: "##22C55E",
-      data: [],
-      label: '',
-      barPercentage: 0.2
-    }
-  ];
+  barChartData: ChartDataset[]
 
   async apiCall() {
     let res = await this.backend.getDashboardData();
@@ -74,34 +54,78 @@ export class DashboardComponent implements OnInit {
   onClick(val) {
     this.status = !val
     this.barChartLabels = ['0 h', '1 h', '2 h', '4 h', '6 h', '8 h', '10 h', '12 h'];
-    let tempArr = [];
+    let mon = [];
+    let Tue = [];
+    let Wed = [];
+    let Thu = [];
+    let fry = [];
+    let sat = [];
+    let sun = [];
+
     if (val) {
       this.barChartLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
       console.log(this.vehicleData)
       this.vehicleData.forEach(element => {
         if (this.days[new Date(element.date * 1000).getDay()] === "Monday") {
-          console.log(tempArr['M'])
-           if( !tempArr['M']){
-              tempArr.push({'M' : []})
-           }
-
-          //  tempArr['M'].push(element)
+          mon.push(element)
         }
 
         if (this.days[new Date(element.date * 1000).getDay()] == "Tuesday") {
-          console.log('sdsd')
+          Tue.push(element)
         }
 
         if (this.days[new Date(element.date * 1000).getDay()] == "Wednesday") {
-          console.log('sdsd')
+          Wed.push(element)
         }
 
         if (this.days[new Date(element.date * 1000).getDay()] == "Thursday") {
-          console.log('sds')
+          Thu.push(element)
         }
- console.log(tempArr)
+
+        if (this.days[new Date(element.date * 1000).getDay()] == "Friday") {
+          fry.push(element)
+        }
+
+        if (this.days[new Date(element.date * 1000).getDay()] == "Saturday") {
+          sat.push(element)
+        }
+
+        if (this.days[new Date(element.date * 1000).getDay()] == "Sunday") {
+          sun.push(element)
+        }
+ 
       });
+console.log(Tue.length, Wed.length)
+       this.daysArr = { ...this.daysArr  , ...{ mon : mon.length, Tue : Tue.length, Wed : Wed.length, Thu : Thu.length, fry : fry.length, sat : sat.length, sun : sun.length } };
     }
+    this.initialize();
+  }
+
+  initialize(){
+     this.barChartData = [
+      {
+        backgroundColor: "#1D4ED8",
+        hoverBackgroundColor: "#1D4ED8",
+        data: [5],
+        label: '',
+        barPercentage: 0.2
+      },
+      {
+        backgroundColor: "#33BFFF",
+        hoverBackgroundColor: "#33BFFF",
+        data: [
+          this.daysArr['mon'], this.daysArr['Tue'], this.daysArr['Wed'], this.daysArr['Thu'], this.daysArr['fry'], this.daysArr['Sat'], this.daysArr['Sun']],
+        label: '4 Wheeler',
+        barPercentage: 0.2,
+      },
+      {
+        backgroundColor: "#22C55E",
+        hoverBackgroundColor: "##22C55E",
+        data: [],
+        label: '',
+        barPercentage: 0.2
+      }
+    ];
   }
 
 }
