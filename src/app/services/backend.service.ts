@@ -70,8 +70,11 @@ export class BackendService {
     return this.makePostApiCall('passwordReset',payload)
   }
 
-  getDashboardData(){
-    let url = `dashboard`
+  getDashboardData(val){
+    console.log(val)
+    let url;
+    url = val.isDailyBasis ? `dashboard?isDailyBasis=${val.isDailyBasis}` :
+          val.isWeeklyBasis ? `dashboard?isWeeklyBasis=${val.isWeeklyBasis}` : `dashboard?isMonthlyBasis=${val.isMonthlyBasis}`
     return  this.makeGetApiCallToPromise(url)
   }
 }

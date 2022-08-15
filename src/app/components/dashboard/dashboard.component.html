@@ -15,16 +15,26 @@
         </div>
 
         <div class="margin-left"  fxLayout="row" fxLayoutAlign="start stretch" fxFlex = 100>
-            <div style="border: 1px solid lightgrey">
-                <button mat-button [ngClass]="{'gray': status , 'white' : true}" (click)="onClick(status)">Daily</button>
-                <button mat-button [ngClass]="{'gray': !status , 'white' : true}" (click)="onClick(status)">Weekly</button>
+            <div style="border: 1px solid lightgrey" fxLayout="row" fxLayoutAlign="start stretch">
+              <div style=" border: 1px solid black;">
+                <button style="width: 100%;"  mat-button [ngClass]="{'gray': status === 'Daily' , 'white' : true}" (click)="onClick('Daily')">Daily</button>
+              </div>
+
+              <div style=" border: 1px solid black;">
+                <button style="width: 100%;" mat-button [ngClass]="{'gray': status === 'Weekly' , 'white' : true}" (click)="onClick('Weekly')">Weekly</button>
+              </div>
+
+              <div style="border: 1px solid black;" >
+                <button style="width: 100%;" mat-button [ngClass]="{'gray': status === 'Monthly' , 'white' : true}" (click)="onClick('Monthly')">Monthly</button>
+              </div>
+
             </div>
         </div>
         <div class="margin-left" fxLayout="row" fxLayoutAlign="start stretch" style="background-color:#F9F9F9;padding: 10px;">
             <div class="chart-wrapper" style="width:80%" >
-                <canvas baseChart 
+                <canvas baseChart
                 [datasets]="barChartData"
-                [labels]="barChartLabels"
+                [labels]="ChartLabels"
                 [options]="barChartOptions"
                 [plugins]="barChartPlugins"
                 [legend]="barChartLegend"
